@@ -16,6 +16,9 @@ class Program2 {
             if(i==strLength/2) {
                 System.out.println("Your string is a palindrome.");
             }
+            else {
+                System.out.println("Your string isn't a palindrome.");
+            }
         }
         catch(Exception ourException) {
             System.out.println("\nSomething is wrong: " + ourException);
