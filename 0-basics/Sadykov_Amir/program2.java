@@ -15,9 +15,9 @@ public static void main(String[] args) {
 		
 		}
 		if(str.equals(strCopy))
-			System.out.println("строка палиндром");
+			System.out.println("string is a palindrome");
 		else
-			System.out.println("строка не явл палиндромом");
+			System.out.println("string isn't a palindrome");
 		
 	}
 }
