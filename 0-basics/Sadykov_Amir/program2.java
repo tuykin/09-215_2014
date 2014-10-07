@@ -18,6 +18,7 @@ public static void main(String[] args) {
 			System.out.println("string is a palindrome");
 		else
 			System.out.println("string isn't a palindrome");
+		scan.close();
 		
 	}
 }
