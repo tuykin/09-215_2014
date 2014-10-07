@@ -4,22 +4,22 @@ public class Triangle {
 	private Point mB;
 	private Point mC;
 
-	// Конструктор с параметрами - точками
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё - С‚РѕС‡РєР°РјРё
 	public Triangle(Point a, Point b, Point c) {
-		// Проверяем, не совпадают ли точки
+		// РџСЂРѕРІРµСЂСЏРµРј, РЅРµ СЃРѕРІРїР°РґР°СЋС‚ Р»Рё С‚РѕС‡РєРё
 		if (a.isEqualTo(b) || b.isEqualTo(c) || c.isEqualTo(a)) {
-			System.err.println("Ошибка построения треугольника c вершинами ("
+			System.err.println("РћС€РёР±РєР° РїРѕСЃС‚СЂРѕРµРЅРёСЏ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° c РІРµСЂС€РёРЅР°РјРё ("
 					+ a.x + "; " + a.y + "),(" + b.x + "; " + b.y + "),(" + c.x
-					+ "; " + c.y + "):" + "\n" + "   совпадающие точки");
+					+ "; " + c.y + "):" + "\n" + "   СЃРѕРІРїР°РґР°СЋС‰РёРµ С‚РѕС‡РєРё");
 			System.exit(1);
 		}
-		// Проверяем, лежат ли точки на одной прямой
-		// Для этого проверим на коллинеарность векторы AB, AC
+		// РџСЂРѕРІРµСЂСЏРµРј, Р»РµР¶Р°С‚ Р»Рё С‚РѕС‡РєРё РЅР° РѕРґРЅРѕР№ РїСЂСЏРјРѕР№
+		// Р”Р»СЏ СЌС‚РѕРіРѕ РїСЂРѕРІРµСЂРёРј РЅР° РєРѕР»Р»РёРЅРµР°СЂРЅРѕСЃС‚СЊ РІРµРєС‚РѕСЂС‹ AB, AC
 		else if (new Vector(a, b).isCollinearWith(new Vector(a, c))) {
-			System.err.println("Ошибка построения треугольника c вершинами ("
+			System.err.println("РћС€РёР±РєР° РїРѕСЃС‚СЂРѕРµРЅРёСЏ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° c РІРµСЂС€РёРЅР°РјРё ("
 					+ a.x + "; " + a.y + "),(" + b.x + "; " + b.y + "),(" + c.x
 					+ "; " + c.y + "):" + "\n"
-					+ "   точки лежат на одной прямой");
+					+ "   С‚РѕС‡РєРё Р»РµР¶Р°С‚ РЅР° РѕРґРЅРѕР№ РїСЂСЏРјРѕР№");
 			System.exit(1);
 		}
 
@@ -28,26 +28,26 @@ public class Triangle {
 		this.mC = new Point(c);
 	}
 
-	// Конструктор с параметрами - координатами точек
+	// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ СЃ РїР°СЂР°РјРµС‚СЂР°РјРё - РєРѕРѕСЂРґРёРЅР°С‚Р°РјРё С‚РѕС‡РµРє
 	public Triangle(double ax, double ay, double bx, double by, double cx,
 			double cy) {
 		Point a = new Point(ax, ay);
 		Point b = new Point(bx, by);
 		Point c = new Point(cx, cy);
-		// Проверяем, не совпадают ли точки
+		// РџСЂРѕРІРµСЂСЏРµРј, РЅРµ СЃРѕРІРїР°РґР°СЋС‚ Р»Рё С‚РѕС‡РєРё
 		if (a.isEqualTo(b) || b.isEqualTo(c) || c.isEqualTo(a)) {
-			System.err.println("Ошибка построения треугольника c вершинами ("
+			System.err.println("РћС€РёР±РєР° РїРѕСЃС‚СЂРѕРµРЅРёСЏ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° c РІРµСЂС€РёРЅР°РјРё ("
 					+ ax + "; " + ay + "),(" + bx + "; " + by + "),(" + cx
-					+ "; " + cy + "):" + "\n" + "   совпадающие точки");
+					+ "; " + cy + "):" + "\n" + "   СЃРѕРІРїР°РґР°СЋС‰РёРµ С‚РѕС‡РєРё");
 			System.exit(1);
 		}
-		// Проверяем, лежат ли точки на одной прямой
-		// Для этого проверим на коллинеарность векторы AB, AC
+		// РџСЂРѕРІРµСЂСЏРµРј, Р»РµР¶Р°С‚ Р»Рё С‚РѕС‡РєРё РЅР° РѕРґРЅРѕР№ РїСЂСЏРјРѕР№
+		// Р”Р»СЏ СЌС‚РѕРіРѕ РїСЂРѕРІРµСЂРёРј РЅР° РєРѕР»Р»РёРЅРµР°СЂРЅРѕСЃС‚СЊ РІРµРєС‚РѕСЂС‹ AB, AC
 		else if (new Vector(a, b).isCollinearWith(new Vector(a, c))) {
-			System.err.println("Ошибка построения треугольника c вершинами ("
+			System.err.println("РћС€РёР±РєР° РїРѕСЃС‚СЂРѕРµРЅРёСЏ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° c РІРµСЂС€РёРЅР°РјРё ("
 					+ ax + "; " + ay + "),(" + bx + "; " + by + "),(" + cx
 					+ "; " + cy + "):" + "\n"
-					+ "   точки лежат на одной прямой");
+					+ "   С‚РѕС‡РєРё Р»РµР¶Р°С‚ РЅР° РѕРґРЅРѕР№ РїСЂСЏРјРѕР№");
 			System.exit(1);
 		}
 		this.mA = new Point(a);
@@ -55,8 +55,8 @@ public class Triangle {
 		this.mC = new Point(c);
 	}
 
-	// Длины сторон
-	// Порядок: AB, BC, AC
+	// Р”Р»РёРЅС‹ СЃС‚РѕСЂРѕРЅ
+	// РџРѕСЂСЏРґРѕРє: AB, BC, AC
 	public double[] getSideLengths() {
 		double[] lengthArray = new double[3];
 		lengthArray[0] = new Vector(mA, mB).length();
@@ -65,8 +65,8 @@ public class Triangle {
 		return lengthArray;
 	}
 
-	// Углы (в радианах)
-	// Порядок: A, B, C
+	// РЈРіР»С‹ (РІ СЂР°РґРёР°РЅР°С…)
+	// РџРѕСЂСЏРґРѕРє: A, B, C
 	public double[] getAngles() {
 		double[] angleArray = new double[3];
 		angleArray[0] = new Vector(mA, mB).angleWith(new Vector(mA, mC));
@@ -75,15 +75,15 @@ public class Triangle {
 		return angleArray;
 	}
 
-	// Площадь
+	// РџР»РѕС‰Р°РґСЊ
 	public double getArea() {
 		// S = 1/2 * AB*AC*sin(A)
 		double[] lengths = this.getSideLengths();
 		return 0.5 * lengths[0] * lengths[2] * Math.sin(this.getAngles()[0]);
 	}
 
-	// Сдвиг треугольника на заданное расстояние
-	// Параметры - величины сдвига по осям ассцисс и ординат
+	// РЎРґРІРёРі С‚СЂРµСѓРіРѕР»СЊРЅРёРєР° РЅР° Р·Р°РґР°РЅРЅРѕРµ СЂР°СЃСЃС‚РѕСЏРЅРёРµ
+	// РџР°СЂР°РјРµС‚СЂС‹ - РІРµР»РёС‡РёРЅС‹ СЃРґРІРёРіР° РїРѕ РѕСЃСЏРј Р°СЃСЃС†РёСЃСЃ Рё РѕСЂРґРёРЅР°С‚
 	public void shift(double distanceRight, double distanceUp) {
 		this.mA.x += distanceRight;
 		this.mB.x += distanceRight;
@@ -93,8 +93,8 @@ public class Triangle {
 		this.mC.y += distanceUp;
 	}
 
-	// Поворот вокруг нуля на угол, заданный в градусах
-	// (против часовой стрелки)
+	// РџРѕРІРѕСЂРѕС‚ РІРѕРєСЂСѓРі РЅСѓР»СЏ РЅР° СѓРіРѕР», Р·Р°РґР°РЅРЅС‹Р№ РІ РіСЂР°РґСѓСЃР°С…
+	// (РїСЂРѕС‚РёРІ С‡Р°СЃРѕРІРѕР№ СЃС‚СЂРµР»РєРё)
 	public void rotate(double angle) {
 		double t = angle * Math.PI / 180;
 		double cosT = Math.cos(t);
@@ -111,7 +111,7 @@ public class Triangle {
 		this.mC.y = mCx * sinT + this.mC.y * cosT;
 	}
 
-	// Координаты вершин треугольника
+	// РљРѕРѕСЂРґРёРЅР°С‚С‹ РІРµСЂС€РёРЅ С‚СЂРµСѓРіРѕР»СЊРЅРёРєР°
 	public double[] getVerticesCoordinates() {
 		double[] verticeArray = new double[6];
 		verticeArray[0] = this.mA.x;
@@ -124,3 +124,4 @@ public class Triangle {
 	}
 
 }
+

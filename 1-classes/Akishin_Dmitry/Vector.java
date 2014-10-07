@@ -1,5 +1,5 @@
 public class Vector {
-	// Вектор на плоскости, заданный двумя точками
+	// Р’РµРєС‚РѕСЂ РЅР° РїР»РѕСЃРєРѕСЃС‚Рё, Р·Р°РґР°РЅРЅС‹Р№ РґРІСѓРјСЏ С‚РѕС‡РєР°РјРё
 	private Point mInitialPoint;
 	private Point mTerminalPoint;
 
@@ -8,7 +8,7 @@ public class Vector {
 		this.mTerminalPoint = new Point(b);
 	}
 
-	// Компоненты вектора
+	// РљРѕРјРїРѕРЅРµРЅС‚С‹ РІРµРєС‚РѕСЂР°
 	public double getComponentX() {
 		return (this.mTerminalPoint.x - this.mInitialPoint.x);
 	}
@@ -17,24 +17,24 @@ public class Vector {
 		return (this.mTerminalPoint.y - this.mInitialPoint.y);
 	}
 
-	// Скалярное произведение на вектор
+	// РЎРєР°Р»СЏСЂРЅРѕРµ РїСЂРѕРёР·РІРµРґРµРЅРёРµ РЅР° РІРµРєС‚РѕСЂ
 	public double scalarProduct(Vector v) {
 		return (this.getComponentX() * v.getComponentX() + this.getComponentY()
 				* v.getComponentY());
 	}
 
-	// Длина вектора
+	// Р”Р»РёРЅР° РІРµРєС‚РѕСЂР°
 	public double length() {
 		return Math.sqrt(Math.pow(this.getComponentX(), 2)
 				+ Math.pow(this.getComponentY(), 2));
 	}
 
-	// Угол между векторами this и v (векторы исходят из одной точки)
+	// РЈРіРѕР» РјРµР¶РґСѓ РІРµРєС‚РѕСЂР°РјРё this Рё v (РІРµРєС‚РѕСЂС‹ РёСЃС…РѕРґСЏС‚ РёР· РѕРґРЅРѕР№ С‚РѕС‡РєРё)
 	public double angleWith(Vector v) {
 		return Math.acos(this.scalarProduct(v) / (this.length() * v.length()));
 	}
 
-	// Коллинеарность с вектором v
+	// РљРѕР»Р»РёРЅРµР°СЂРЅРѕСЃС‚СЊ СЃ РІРµРєС‚РѕСЂРѕРј v
 	public boolean isCollinearWith(Vector v) {
 		return (this.getComponentX() * v.getComponentY() - this.getComponentY()
 				* v.getComponentX() == 0);
