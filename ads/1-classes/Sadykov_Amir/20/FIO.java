@@ -18,12 +18,25 @@ public class FIO {
 	//Методы-Селекторы:
 	public void Show()
 	{
-		System.out.println(this.name+" "+this.surname+" "+this.patronymic);
+		System.out.println(this.surname+" "+this.name+" "+this.patronymic);
 	}
 	
 	public String getFIO()
 	{
 		return(this.name+" "+this.surname+" "+this.patronymic);
+	}
+	
+	public String getName()
+	{
+		return this.name;
+	}
+	public String getSurname()
+	{
+		return this.surname;
+	}
+	public String getPatronymic()
+	{
+		return this.patronymic;
 	}
 	
 }
