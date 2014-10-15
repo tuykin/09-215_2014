@@ -1,0 +1,113 @@
+CREATE TABLE Roomclasses 
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+class VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE Roomviews 
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+view VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE Roomtypes 
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+type VARCHAR(45) NOT NULL
+);
+
+CREATE TABLE Rooms
+(
+number INT NOT NULL PRIMARY KEY,
+floor INT NOT NULL,
+type_id INT NOT NULL,
+view_id INT NOT NULL,
+class_id INT NOT NULL,
+price DECIMAL(10,2) UNSIGNED NOT NULL,
+CONSTRAINT fk_type FOREIGN KEY (type_id) REFERENCES Roomtypes (id),
+CONSTRAINT fk_class FOREIGN KEY (class_id) REFERENCES Roomclasses (id),
+CONSTRAINT fk_view FOREIGN KEY (view_id) REFERENCES Roomviews (id)
+);
+
+CREATE TABLE Servicetypes 
+(
+id INT NOT NULL AUTO_INCREMENT  PRIMARY KEY,
+type VARCHAR(45) NOT NULL,
+price DECIMAL(10,2) UNSIGNED NOT NULL
+);
+
+CREATE TABLE Services
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+room_number INT NOT NULL,
+date DATE NOT NULL,
+servicetype_id INT NOT NULL,
+CONSTRAINT fk_servRoom FOREIGN KEY (room_number) REFERENCES Rooms (number),
+CONSTRAINT fk_servicetype FOREIGN KEY (servicetype_id) REFERENCES Servicetypes (id)
+);
+
+CREATE TABLE Passwords
+(
+id INT NOT NULL PRIMARY KEY,
+username VARCHAR(45) NOT NULL,
+password VARCHAR(45) NOT NULL,
+admin BOOLEAN NOT NULL DEFAULT 0
+);
+
+CREATE TABLE Guests
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+last_name VARCHAR(45) NOT NULL,
+first_name VARCHAR(45) NOT NULL,
+patronymic_name VARCHAR(45),
+passport INT NOT NULL,
+country VARCHAR(45) NOT NULL,
+city VARCHAR(45) NOT NULL,
+street VARCHAR(45) NOT NULL,
+housenumber INT NOT NULL,
+flatnumber INT NOT NULL,
+birthdate DATE NOT NULL,
+password_id INT,
+points INT NOT NULL DEFAULT 0,
+CONSTRAINT fk_guestPass FOREIGN KEY (password_id) REFERENCES Passwords (id)
+);
+
+CREATE TABLE Employees
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+last_name VARCHAR(45) NOT NULL,
+first_name VARCHAR(45) NOT NULL,
+patronymic_name VARCHAR(45),
+passport INT NOT NULL,
+password_id INT NOT NULL,
+CONSTRAINT fk_empPass FOREIGN KEY (password_id) REFERENCES Passwords (id)
+);
+
+CREATE TABLE Registrations
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+room_number INT NOT NULL,
+employee_id INT NOT NULL,
+guest_id INT NOT NULL,
+date_begin DATE NOT NULL,
+date_end DATE NOT NULL,
+cost DECIMAL(11,2) UNSIGNED NOT NULL,
+commentary MEDIUMTEXT,
+archived BOOLEAN NOT NULL DEFAULT 0,
+CONSTRAINT fk_regRoom FOREIGN KEY (room_number) REFERENCES Rooms (number),
+CONSTRAINT fk_empID FOREIGN KEY (employee_id) REFERENCES Employees (id),
+CONSTRAINT fk_guestID FOREIGN KEY (guest_id) REFERENCES Guests (id)
+);
+
+CREATE TABLE Reservations
+(
+id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+room_number INT NOT NULL,
+guest_id INT NOT NULL,
+reservation_date DATE NOT NULL,
+date_begin DATE NOT NULL,
+date_end DATE NOT NULL,
+CONSTRAINT fk_resRoom FOREIGN KEY (room_number) REFERENCES Rooms (number),
+CONSTRAINT fk_resGuestID FOREIGN KEY (guest_id) REFERENCES Guests (id)
+);
+
