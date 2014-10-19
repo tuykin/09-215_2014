@@ -1,0 +1,56 @@
+CREATE TABLE Reservation
+(
+idReservation INT NOT NULL  PRIMARY KEY,,
+date DATE NOT NULL,
+K_days INT NOT NULL,
+K_child INT NOT NULL,
+K_grown INT NOT NULL,
+CONSTRAINT fk_Customer FOREIGN KEY (CustomerId) REFERENCES Customer(idCustomer),
+CONSTRAINT fk_Tourists  FOREIGN KEY (TouristsId) REFERENCES Tourists(idTourists),
+CONSTRAINT fk_Hotel  FOREIGN KEY (HotelId) REFERENCES  Hotel(idHotel)
+);
+CREATE TABLE Customer 
+(
+idCustomer INT NOT NULL PRIMARY KEY,
+FIO  VARCHAR(45) NOT NULL, 
+¹Passport INT NOT NULL,
+Series passport INT NOT NULL,
+Date issue DATE NOT NULL,
+Issued VARCHAR(45) NOT NULL,
+Phone INT NOT NULL,
+Adress VARCHAR(45) NOT NULL
+);
+CREATE TABLE Tourists
+(
+idTourists  INT NOT NULL PRIMARY KEY,
+Sex VARCHAR(45) NOT NULL,
+Surname VARCHAR(45) NOT NULL, 
+Name VARCHAR(45) NOT NULL,
+Date of birth DATE NOT NULL,
+¹Passport INT NOT NULL,
+Series passport INT NOT NULL,
+Issued VARCHAR(45) NOT NULL,
+Citizenship VARCHAR(45) NOT NULL,
+CONSTRAINT fk_Hotel FOREIGN KEY (HotelId) REFERENCES Hotel(idHotel)
+ );
+CREATE TABLE  Resort
+(
+idResort INT NOT NULL PRIMARY KEY,
+Title VARCHAR(45) NOT NULL
+);
+CREATE TABLE  Hotel
+(
+idHotel INT NOT NULL PRIMARY KEY,
+Country VARCHAR(45) NOT NULL,
+Resort VARCHAR(45) NOT NULL,
+Price INT NOT NULL,
+CONSTRAINT fk_Resort FOREIGN KEY (ResortId) REFERENCES Resort(idResort)
+);  
+CREATE TABLE  Flight
+( 
+idFlight INT NOT NULL PRIMARY KEY,
+Departure DATETIME NOT NULL,
+Arrival DATETIME NOT NULL,
+City VARCHAR(45) NOT NULL,
+CONSTRAINT fk_Reservation FOREIGN KEY ( ReservationId) REFERENCES Reservation(idReservation)
+);
