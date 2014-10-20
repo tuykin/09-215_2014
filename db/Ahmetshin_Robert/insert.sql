@@ -1,0 +1,12 @@
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (1, 'Роберт', 'Ахметшин', '1994-12-11', true, '2014-09-28', '89872623631');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (2, 'Амир', 'Садыков', '1994-12-23', true, '2014-01-30', '89504632857');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (3, 'Кирилл', 'Кудря', '1994-09-04', true, '2013-12-30', '89867468375');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (4, 'Регина', 'Смирнова', '1989-10-19', false, '2013-12-12', '89026577483');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (5, 'Анвар', 'Туйкин', '1989-10-24', false, '2014-04-16', '89877368549');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (6, 'Загир', 'Муратов', '2000-10-21', false, '2014-03-14', '89655555557');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (7, 'Напрогиб', 'Горемых', '1999-09-12', false, '2013-11-30', '2634585');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (8, 'Забрат', 'Угналмашину', '1991-04-25', false, '2014-01-12', '89047564837');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (9, 'Илья', 'Нагибонов', '2001-01-01', false, '2014-10-13', '89876376584');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (10, 'Олег', 'Нефедов', '2002-06-15', false, '2014-05-13', '89757564839');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (11, 'Александр', 'Высер', '1982-03-21', false, '2014-07-16', '89657462483');
+INSERT INTO `SportClub`.`Clients` (`id`, `name`, `surname`, `birthday`, `isStudent`, `lastVisit`, `phoneNumber`) VALUES (NULL, NULL, NULL, NULL, NULL, '', NULL);
