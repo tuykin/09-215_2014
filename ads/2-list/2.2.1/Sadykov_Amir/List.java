@@ -110,25 +110,24 @@ public class List {
 			}
 		}
 	}
-	
-	//метод для задачи 2.2.1
-		public void RemoveNeighbors()
+		
+	//РјРµС‚РѕРґ РґР»СЏ Р·Р°РґР°С‡Рё 2.2.1
+	public void RemoveNeighbors()
+	{
+		if(!this.isEmpty())
 		{
-			if(!this.isEmpty())
+			Node n=this.first;
+			while(n.next!=null)
 			{
-				Node n=this.first;
-				while(n.next!=null)
+				if(n.info.equals(n.next.info))
 				{
-					if(n.info.equals(n.next.info))
-					{
-						n.next=n.next.next;
-					}
-					else
-						n=n.next;	
+					n.next=n.next.next;
 				}
+				else
+					n=n.next;	
 			}
 		}
-					
+	}
 	public static void main(String[] args)
 	{
 		List MyList=new List();
@@ -141,8 +140,11 @@ public class List {
 		MyList.Show();
 		MyList.RemoveNeighbors();
 		MyList.ModifyList();
-		MyList.Show();	
+		MyList.Show();
+
+		
 	}
+
 }
 
 
