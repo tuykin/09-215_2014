@@ -18,7 +18,7 @@ public class Main {
 		polynomial.print();
 
 		double c = 5, d = 2;
-		System.out.print("\nЧастное от деления на (" + c + " + " + d
+		System.out.print("\nР§Р°СЃС‚РЅРѕРµ РѕС‚ РґРµР»РµРЅРёСЏ РЅР° (" + c + " + " + d
 				+ " * x) :\n");
 		polynomial.divideBy(c, d).print();
 
