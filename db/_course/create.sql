@@ -1,24 +1,24 @@
 PRAGMA foreign_keys=ON;
 
-DROP TABLE departments;
+DROP TABLE IF EXISTS departments;
 CREATE TABLE departments (
 id INTEGER NOT NULL PRIMARY KEY,
-name VARCHAR NOT NULL
+name VARCHAR(45) NOT NULL
 );
 
-DROP TABLE groups;
+DROP TABLE IF EXISTS groups;
 CREATE TABLE groups (
 id INTEGER NOT NULL PRIMARY KEY,
 department_id INTEGER REFERENCES departments(id),
-name VARCHAR NOT NULL,
-students_count INTEGER NOT NULL DEFAULT 0,
+name VARCHAR(45) NOT NULL,
+students_count INTEGER NOT NULL DEFAULT 0 CHECK(students_count >=0)
 );
 
-DROP TABLE students;
+DROP TABLE IF EXISTS students;
 CREATE TABLE students (
 id INTEGER NOT NULL PRIMARY KEY,
-surname VARCHAR NOT NULL,
-name VARCHAR NOT NULL,
+surname VARCHAR(45) NOT NULL,
+name VARCHAR(45) NOT NULL,
 group_id INTEGER
 );
 
@@ -29,3 +29,4 @@ BEGIN
   UPDATE groups SET students_count = students_count + 1
   WHERE groups.id = NEW.group_id;
 END;
+
