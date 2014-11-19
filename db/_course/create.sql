@@ -1,4 +1,4 @@
-PRAGMA foreign_keys=ON;
+CREATE DATABASE university;
 
 DROP TABLE IF EXISTS departments;
 CREATE TABLE departments (
