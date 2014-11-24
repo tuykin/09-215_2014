@@ -1,0 +1,86 @@
+private void button1_Click(object sender, EventArgs e)
+        {
+            
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT TABLE_NAME FROM INFORMATION_SCHEMA.TABLES where TABLE_SCHEMA='gai';";
+            MySqlConnection con=myConnectionOpen();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.Text;
+            MySqlDataReader reader = null;
+           
+            try
+            {
+                reader = cmd.ExecuteReader();
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show(f.Message);
+            }
+
+            if (reader != null)
+            {
+
+                StringBuilder str=new StringBuilder();
+                while (reader.Read())
+                {
+
+                    str.Append(reader[0].ToString());
+
+                    str.Append("\n");
+                    comboBox1.Items.Add(reader[0].ToString());
+                }
+               // str +=(StringBuilder) reader[0].ToString();
+                
+               // MessageBox.Show(str.ToString());
+                //textBox1.Text = str.ToString();
+                System.Console.WriteLine("jfkg");
+                  //  MessageBox.Show(reader[1].ToString());
+                   // System.Console.WriteLine(reader[0].ToString());
+                
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            textBox1.Clear();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.CommandText = "SELECT * FROM "+comboBox1.Text+";";
+           // MessageBox.Show(comboBox1.Text);
+            MySqlConnection con = myConnectionOpen();
+            cmd.Connection = con;
+            cmd.CommandType = CommandType.Text;
+            MySqlDataReader reader = null;
+             try
+            {
+                reader = cmd.ExecuteReader();
+            }
+            catch (Exception f)
+            {
+                MessageBox.Show(f.Message);
+            }
+
+             if (reader != null)
+             {
+                 //  while (reader.Read())
+                 //{
+                 while (reader.Read())
+                 {
+
+                     for (int i = 0; i < reader.FieldCount; i++)
+                     {
+
+
+
+                         // MessageBox.Show(reader.FieldCount.ToString());
+                         textBox1.Text += reader[i].ToString();
+                         textBox1.Text += " ";
+                         // textBox1.Text += reader[1].ToString();
+                         // textBox1.Text += "\n";
+                     }
+                    textBox1.Text += Environment.NewLine;
+
+                 }
+             }
+        }
+    }
+}
