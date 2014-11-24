@@ -1,5 +1,0 @@
-D:\Visual_Studio_Projects\ConsoleDB\ConsoleDB\bin\Debug\ConsoleDB.exe.config
-D:\Visual_Studio_Projects\ConsoleDB\ConsoleDB\bin\Debug\ConsoleDB.exe
-D:\Visual_Studio_Projects\ConsoleDB\ConsoleDB\bin\Debug\ConsoleDB.pdb
-D:\Visual_Studio_Projects\ConsoleDB\ConsoleDB\obj\Debug\ConsoleDB.exe
-D:\Visual_Studio_Projects\ConsoleDB\ConsoleDB\obj\Debug\ConsoleDB.pdb
