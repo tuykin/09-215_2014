@@ -24,14 +24,14 @@ public class UniversityConsole {
 		selectStudents();
 		shutdown();
 	}
-	
+
 	private static void createConnection()
     {
         try
         {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             //Get a connection
-            conn = DriverManager.getConnection(dbURL); 
+            conn = DriverManager.getConnection(dbURL);
             System.out.println("Connection established");
         }
         catch (Exception except)
@@ -39,7 +39,7 @@ public class UniversityConsole {
             except.printStackTrace();
         }
     }
-	
+
 	private static void selectStudents()
     {
         try
@@ -51,7 +51,7 @@ public class UniversityConsole {
             for (int i=1; i<=numberCols; i++)
             {
                 //print Column Names
-                System.out.print(rsmd.getColumnLabel(i)+"\t\t");  
+                System.out.print(rsmd.getColumnLabel(i)+"\t\t");
             }
 
             System.out.println("\n---------------------------------------------------------");
@@ -63,7 +63,7 @@ public class UniversityConsole {
                 String surname = results.getString(2);
                 String name = results.getString(3);
                 int group_id = results.getInt(4);
-                
+
                 System.out.printf(format, id, surname, name, group_id);
 //                System.out.println(id + "\t\t" + surname + "\t\t" + name + "\t\t" + group_id);
             }
@@ -75,7 +75,23 @@ public class UniversityConsole {
             sqlExcept.printStackTrace();
         }
     }
-	
+
+    private static void insertStudents(int id, String surname, String name, int group_id)
+    {
+        try
+        {
+            stmt = conn.createStatement();
+            stmt.execute("insert into " + tableName +
+                    "(id, surname, name, group_id)" + " values (" +
+                    "'" + id + "', '" + surname + "', '" + name + "', '" + group_id + "')");
+            stmt.close();
+        }
+        catch (SQLException sqlExcept)
+        {
+            sqlExcept.printStackTrace();
+        }
+    }
+
 	private static void shutdown()
     {
         try
@@ -88,11 +104,11 @@ public class UniversityConsole {
             {
                 DriverManager.getConnection(dbURL + ";shutdown=true");
                 conn.close();
-            }           
+            }
         }
         catch (SQLException sqlExcept)
         {
-            
+
         }
 
     }
