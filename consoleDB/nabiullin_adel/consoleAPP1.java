@@ -71,26 +71,20 @@ public class GameDevProjectsConsole {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     // закрыть подключение
     private static void shutdown() {
         try {
             if (stmt != null) {
-//                System.out.println("111");
                 stmt.close();
-//                System.out.println("222");
             }
             if (conn != null) {
-//                System.out.println("333");
-                DriverManager.getConnection(dbURL + ";shutdown=true");
-//                System.out.println("444");
                 conn.close();
-//                System.out.println("555");
             }
-//            System.out.println("Connection interrupted");
+            System.out.println("Connection interrupted");
         } catch (SQLException sqlExcept) {
+            System.out.println(sqlExcept.fillInStackTrace());
         }
     }
 
