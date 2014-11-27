@@ -23,8 +23,10 @@ create table TESTS (
 student_id integer not null,
 discipline_id integer not null,
 result double not null check (result>0),
-constraint TESTS_STUDENTS foreign key (student_id) references Students(id) on delete cascade on update cascade,
-constraint TESTS_DISCIPLINES foreign key (discipline_id) references Disciplines(id) on delete cascade on update cascade,
+constraint TESTS_STUDENTS foreign key (student_id) references Students(id) 
+on delete cascade on update cascade,
+constraint TESTS_DISCIPLINES foreign key (discipline_id) references Disciplines(id) 
+on delete cascade on update cascade,
 constraint unique_student_discipline unique (student_id, discipline_id)
 );
 
@@ -32,5 +34,6 @@ create table ACCOUNTS (
 student_id integer not null unique,
 login varchar(20) not null unique,
 password varchar(20) not null unique,
-constraint ACCOUNTS_STUDENTS foreign key (student_id) references Students(id) on delete cascade on update cascade
+constraint ACCOUNTS_STUDENTS foreign key (student_id) references Students(id) 
+on delete cascade on update cascade
 );
