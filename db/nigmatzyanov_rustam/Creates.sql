@@ -10,7 +10,6 @@ course integer default 1 not null check (course>0),
 badgetype enum("bronze","silver","gold")
 );
 
-
 create table DISCIPLINES (
 id integer not null primary key,
 title varchar(30) not null,
@@ -31,9 +30,10 @@ constraint unique_student_discipline unique (student_id, discipline_id)
 );
 
 create table ACCOUNTS (
-student_id integer not null unique,
+student_id integer unique,
 login varchar(20) not null unique,
 password varchar(20) not null unique,
+teacher boolean not null default 0,
 constraint ACCOUNTS_STUDENTS foreign key (student_id) references Students(id) 
 on delete cascade on update cascade
 );
