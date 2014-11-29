@@ -75,13 +75,16 @@ insert into Tests values
 (10, 5, 10);
 
 insert into Accounts values
-(1, "RINigmatzyanov", "tgmk64gu1h"),
-(2, "KVAlexandrov", "erhrn35nr5g"),
-(3, "GMBerdnikova", "yw45gbr7br"),
-(4, "AIShaydullina", "yb4ew5gh"),
-(5, "APHabibullin", "uvw2rv56wc"),
-(6, "VSMonakov", "y4rbr67er"),
-(7, "ALHakimullina", "nxr6d5m3g"),
-(8, "VRBelova", "rhr44brb3gg"),
-(9, "YEFilippov", "q3ghj4bb9v"),
-(10, "EBAndreev", "hsv3b55bf");
+(1, "RINigmatzyanov", "tgmk64gu1h", 0),
+(2, "KVAlexandrov", "erhrn35nr5g", 0),
+(3, "GMBerdnikova", "yw45gbr7br", 0),
+(4, "AIShaydullina", "yb4ew5gh", 0),
+(5, "APHabibullin", "uvw2rv56wc", 0),
+(6, "VSMonakov", "y4rbr67er", 0),
+(7, "ALHakimullina", "nxr6d5m3g", 0),
+(8, "VRBelova", "rhr44brb3gg", 0),
+(9, "YEFilippov", "q3ghj4bb9v", 0),
+(10, "EBAndreev", "hsv3b55bf", 0),
+(null, "RHMustafin", "nw1ur4y6yh", 1),
+(null, "GPIvanov", "dwc23cr5vh", 1),
+(null, "NVKozlova", "e1cw4nt6b", 1);
