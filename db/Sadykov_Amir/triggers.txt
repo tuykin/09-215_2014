@@ -1,0 +1,20 @@
+create trigger fines_on_insert
+on fines
+after insert
+as begin
+	update people
+		set count_fines = count_fines + 1
+		from inserted
+		where people_id = people.id
+	end
+
+
+create trigger amount_fines_on_insert
+on fines
+after insert
+as begin
+	update people
+		set amount_fines = amount_fines + fine_types.amount
+		from inserted, fine_types
+		where people_id = people.id and fines_id=fine_types.id
+	end

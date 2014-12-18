@@ -1,18 +1,20 @@
 CREATE TABLE brands (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL,
   brand VARCHAR(45) NOT NULL,
   PRIMARY KEY (id));
 
 CREATE TABLE models (
-  id INT NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL,
   brands_id INT NOT NULL,
   model VARCHAR(45) NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_models_brands
     FOREIGN KEY (brands_id)
-    REFERENCES brands (id)
+    REFERENCES brands(id)
     );
-    CREATE TABLE vehicles (
+
+
+CREATE TABLE vehicles (
   vin CHAR(17) NOT NULL,
   models_id INT NOT NULL,
   type VARCHAR(45) NOT NULL,
@@ -27,45 +29,52 @@ CREATE TABLE models (
   passport VARCHAR(12) NOT NULL,
   max_weight VARCHAR(5) NOT NULL,
   weight VARCHAR(5) NOT NULL,
-  models_has_brandscol VARCHAR(45) NOT NULL,
+  is_deleted BIT NOT NULL DEFAULT 0,
   PRIMARY KEY (vin),
   CONSTRAINT fk_vehicles_models
     FOREIGN KEY (models_id)
     REFERENCES models (id)
     );
-    CREATE TABLE people (
-  id INT NOT NULL AUTO_INCREMENT,
+
+CREATE TABLE people (
+  id INT NOT NULL,
   surname VARCHAR(45) NOT NULL,
   name VARCHAR(45) NOT NULL,
   patronymic VARCHAR(45) NULL,
   birthday DATE NOT NULL,
   gender CHAR(1) NOT NULL,
   TIN CHAR(12) NOT NULL,
+  is_deleted BIT NOT NULL DEFAULT 0,
+  count_fines tinyint NOT NULL DEFAULT 0 CHECK(count_fines>=0),
+  amount_fines INT NOT NULL DEFAULT 0  CHECK(amount_fines>=0),
   PRIMARY KEY (id)
   );
 
+
+CREATE TABLE fine_types (
+  id INT NOT NULL,
+  offence VARCHAR(100) NOT NULL,
+  amount INT NOT NULL CHECK(amount>=0),
+  PRIMARY KEY (id)
+  );
 
 CREATE TABLE fines (
-  id INT NOT NULL AUTO_INCREMENT,
-  offence VARCHAR(100) NOT NULL,
-  amount INT NOT NULL,
-  PRIMARY KEY (id)
-  );
-  CREATE TABLE people_has_fines (
-  protocol_number INT NOT NULL AUTO_INCREMENT,
+  protocol_number INT NOT NULL,
   people_id INT NOT NULL,
   fines_id INT NOT NULL,
   date DATE NOT NULL,
+  is_paid bit NOT NULL DEFAULT 0,
   PRIMARY KEY (protocol_number),
-  CONSTRAINT fk_people
+  CONSTRAINT fk_fines_people
     FOREIGN KEY (people_id)
     REFERENCES people (id),
-  CONSTRAINT fk_fines
+  CONSTRAINT fk_fines_finetype
     FOREIGN KEY (fines_id)
-    REFERENCES fines (id)
+    REFERENCES fine_types(id)
     );
+
 CREATE TABLE driver_licenses (
-  number INT NOT NULL AUTO_INCREMENT,
+  number INT NOT NULL,
   people_id INT NOT NULL,
   date DATE NOT NULL,
   place VARCHAR(45) NOT NULL,
@@ -76,7 +85,8 @@ CREATE TABLE driver_licenses (
     FOREIGN KEY (people_id)
     REFERENCES people (id)
     );
-   CREATE TABLE registered_vehicles (
+
+CREATE TABLE registrations (
   number INT NOT NULL,
   series CHAR(2) NOT NULL,
   people_id INT NOT NULL,
@@ -86,30 +96,32 @@ CREATE TABLE driver_licenses (
   date DATE NOT NULL,
   region TINYINT NOT NULL,
   PRIMARY KEY (number, series),
-  CONSTRAINT fk_registered_vehicles_vin
+  CONSTRAINT fk_registration_vin
     FOREIGN KEY (vehicles_vin)
     REFERENCES vehicles (vin),
-  CONSTRAINT fk_registered_vehicles_people
+  CONSTRAINT fk_registration_vehicles_people
     FOREIGN KEY (people_id)
     REFERENCES people (id)
     ); 
-    CREATE TABLE stolen_vehicles (
+
+ CREATE TABLE stolen_vehicles (
   registered_vehicles_number INT NOT NULL,
   registered_vehicles_series CHAR(2) NOT NULL,
   date DATE NOT NULL,
+  is_deleted bit NOT NULL DEFAULT 0,
   PRIMARY KEY (registered_vehicles_number, registered_vehicles_series),
-  CONSTRAINT fk_stolen_vehicles_registered_vehicles1
+  CONSTRAINT fk_stolen_vehicles_registration
     FOREIGN KEY (registered_vehicles_number , registered_vehicles_series)
-    REFERENCES registered_vehicles (number , series)
+    REFERENCES registrations (number , series)
   );
 
-CREATE TABLE inspec (
-  id INT NOT NULL AUTO_INCREMENT,
+CREATE TABLE inspect (
+  id INT NOT NULL,
   date_of_next DATE NOT NULL,
   registered_vehicles_number INT NOT NULL,
   registered_vehicles_series CHAR(2) NOT NULL,
   PRIMARY KEY (id),
   CONSTRAINT fk_inspec_vehicle
     FOREIGN KEY (registered_vehicles_number , registered_vehicles_series)
-    REFERENCES registered_vehicles (number , series)
+    REFERENCES registrations (number , series)
     );
