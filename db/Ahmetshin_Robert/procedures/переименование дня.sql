@@ -1,0 +1,1 @@
+EXEC sp_rename 'schedule.day', 'dayy', 'COLUMN';
