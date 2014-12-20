@@ -1,4 +1,4 @@
-INSERT INTO Orders (IdOrders,SirName,Name,MiddleName,SeriaPasport,NumberPasport,Birthday)
+INSERT INTO Orders (IdOrders,SurName,Name,MiddleName,SeriaPasport,NumberPasport,Birthday)
 VALUES
 (153,'Петров','Иван','Александрович', 0926,842411, 2002-01-09),
 (154,'Заусенец', 'Артем', 'Васильевич', 0926,854871, 2004-19-06),
