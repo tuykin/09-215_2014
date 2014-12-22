@@ -1,4 +1,12 @@
-Получить логины и пароли студентов и преподавателей
+Получить все факультеты
+DELIMITER \\
+CREATE PROCEDURE get_faculties()
+BEGIN
+select * from faculties;
+END \\
+DELIMITER ;
+
+Получить все логины и пароли
 DELIMITER \\
 CREATE PROCEDURE get_accounts()
 BEGIN
@@ -15,6 +23,14 @@ where id=id_param;
 END \\
 DELIMITER ;
 
+Получить всех студентов
+DELIMITER \\
+CREATE PROCEDURE get_students()
+BEGIN
+select * from students;
+END \\
+DELIMITER ;
+
 Добавить студента КФУ, сдающего комплекс ГТО
 DELIMITER \\
 CREATE PROCEDURE insert_student(IN id integer, 
@@ -24,12 +40,12 @@ IN name varchar(30),
 IN patronymic varchar(30), 
 IN birthday date,
 IN gender varchar(1), 
-IN faculty varchar(100), 
+IN faculty_id integer, 
 IN groupnum varchar(15), 
 IN course integer)
 BEGIN
 insert into students values (id, studentcard, sname, name, patronymic, 
-birthday, gender, faculty, groupnum, course, null);
+birthday, gender, faculty_id, groupnum, course, null);
 END \\
 DELIMITER ;
 
@@ -39,6 +55,14 @@ CREATE PROCEDURE get_student_on_studentcard(IN studentcard_param varchar(15))
 BEGIN
 select * from students
 where studentcard=studentcard_param;
+END \\
+DELIMITER ;
+
+Получить все результаты
+DELIMITER \\
+CREATE PROCEDURE get_tests()
+BEGIN
+select * from tests;
 END \\
 DELIMITER ;
 
@@ -70,14 +94,14 @@ DELIMITER ;
 
 Посмотреть информацию о студентах
 DELIMITER \\
-CREATE PROCEDURE get_students(
+CREATE PROCEDURE get_students_on_params(
 IN studentcard_p varchar(15), 
 IN sname_p varchar(50), 
 IN name_p varchar(30), 
 IN patronymic_p varchar(30), 
 IN birthday_p varchar(10),
 IN gender_p varchar(1), 
-IN faculty_p varchar(100), 
+IN faculty_id_p integer, 
 IN groupnum_p varchar(15), 
 IN course_p integer,
 IN badgetype_p varchar(6))
@@ -89,7 +113,7 @@ name like CONCAT(name_p, '%') AND
 patronymic like CONCAT(patronymic_p, '%') AND
 birthday like CONCAT(birthday_p, '%') AND
 gender like CONCAT(gender_p, '%') AND
-faculty like CONCAT(faculty_p, '%') AND
+(faculty_id_p=0 or faculty_id=faculty_id_p) AND
 groupnum like CONCAT(groupnum_p, '%') AND
 (course_p is null or course=course_p) AND
 (badgetype_p='null' or badgetype like CONCAT(badgetype_p, '%'));
