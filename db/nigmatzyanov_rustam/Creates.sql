@@ -1,3 +1,9 @@
+create table FACULTIES (
+id integer unsigned not null,
+name varchar(100) not null,
+constraint FACULTIES_PK primary key (id)
+);
+
 create table STUDENTS (
 id integer unsigned not null,
 studentcard varchar(15) not null unique,
@@ -6,11 +12,13 @@ name varchar(30) not null,
 patronymic varchar(30) not null,
 birthday date not null,
 gender enum("m","f") not null,
-faculty varchar(100) not null,
+faculty_id integer unsigned not null,
 groupnum varchar(15) not null,
 course integer default 1 not null check (course>0),
 badgetype enum("bronze","silver","gold"),
-constraint STUDENTS_PK primary key (id)
+constraint STUDENTS_PK primary key (id),
+constraint STUDENTS_FACULTIES foreign key (faculty_id) references Faculties(id) 
+on delete cascade on update cascade
 );
 
 create table DISCIPLINES (
