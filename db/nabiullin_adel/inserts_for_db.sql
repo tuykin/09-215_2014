@@ -1,28 +1,31 @@
-insert into Users values
-(1,'highsepton','Berek','Dondarion','1956-03-15','lolita111@ya.ru',89870011222,'m'),
-(2,'XKingStannisX','Stannis','Baratheon','1950-01-01','hardestman@dragonstone.com',89111111111,'m'),
-(3,'LiKeAgIrl111','Jophry','Baratheon','2000-03-08','stupid.bastard@rambler.ru',89006666661,'w'),
-(4,'KingOfNorth007','Robb','Stark','1999-05-01','winteriscuming@gmail.com',89520348687,'m'),
-(5,'meATh00kER','Roose','Bolton','1956-08-13','rooooose4ka@mail.ru',89520350101,'m');
+insert into users (login,password_hash,email) values
+('highsepton','6e73ec475180bd8fface67da4e06cb10','lolita111@ya.ru'),
+('XKingStannisX','68c1182020e1796322478ecd787e4ee2','hardestman@dragonstone.com'),
+('LiKeAgIrl111','b114fa6f2fd0be01c0c50a4531e5cbcc','stupid.bastard@rambler.ru'),
+('KingOfNorth007','cc34018e9c28add354bccbd81f6f3968','winteriscuming@gmail.com'),
+('meATh00kER','a504290628156b08ab14927d5bc22f6c','rooooose4ka@mail.ru');
 
-insert into Passwords values
+/*password for entering!*/
+/*insert into Passwords values
 (1,'top7ecretMMM'),
 (2,'1s2t3a4n'),
 (3,'lalka'),
 (4,'5TARK5areBest'),
-(5,'myC11kISbig123');
+(5,'myC11kISbig123');*/
 
-insert into Resumes values
-(1,1,'tester',35,'java, c#, c++','recent job in company "BratstvoBezZnamen ltd." as a tester of applications for Android');
+insert into resumes values
+(1,1,'Animator',35,'java, c#, c++','recent job in company "BratstvoBezZnamen ltd." as a tester of applications for Android');
 
-insert into Projects values
-(1,'War Behind The Wall: White Walkers Are Coming',2,2),
-(2,'Crossbow Simulator',3,2);
+insert into projects values
+(1,'War Behind The Wall: White Walkers Are Coming','RPG','MMORPG','PC','we are cool guys, join us',2,2),
+(2,'Crossbow Simulator','Simulation','Simulation sport','Game Console','hey hey bow masters, come here',3,2);
 
-insert into Announcements values
-(1,2,'composer');
+insert into announcements values
+(1,1,'QATester'),
+(2,2,'Game Designer'),
+(3,1,'Level Editor');
 
-insert into Users_in_Projects values
+insert into users_in_projects values
 (1,2,1),
 (2,3,2),
 (3,5,2),
@@ -30,8 +33,8 @@ insert into Users_in_Projects values
 (5,1,1),
 (6,1,2);
 
-insert into User_requests values
+insert into user_requests values
 (1,3,1);
 
-insert into Project_Requests values
+insert into project_requests values
 (1,2,2);

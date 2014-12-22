@@ -23,6 +23,10 @@ create table resumes (
 create table projects (
 	id int unsigned not null auto_increment primary key,
 	proj_name varchar(60) not null,
+	global_genre varchar(10) not null,
+	genre varchar(30) not null,
+	platforms varchar(25) not null,
+	information tinytext,
 	leader_id int unsigned not null, /*team leader's id*/
 	count smallint unsigned not null, /*current number of participants*/
 	constraint fk_leaderid_in_projects foreign key (leader_id) references users (id)
@@ -31,8 +35,7 @@ create table projects (
 create table announcements (
 	id int unsigned not null auto_increment unique,
 	proj_id int unsigned not null,
-	position varchar(45) not null,
-	information tinytext,
+	position varchar(35) not null,
 	constraint fk_projid_in_annoucements foreign key (proj_id) references projects (id)
 );
 
