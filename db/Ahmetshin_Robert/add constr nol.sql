@@ -1,0 +1,1 @@
+alter table numberoflessons add constraint pk_nol primary key(section_id,client_id)
