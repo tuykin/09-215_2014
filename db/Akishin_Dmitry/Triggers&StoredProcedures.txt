@@ -1,0 +1,32 @@
+delimiter //
+CREATE TRIGGER pointsCharging AFTER INSERT ON registrations
+FOR EACH ROW
+BEGIN
+UPDATE guests SET points = points + 1 WHERE guests.id = NEW.guest_id;
+END;//
+delimiter ;
+
+DELIMITER // 
+CREATE PROCEDURE `selectRegisteredRooms` () 
+BEGIN 
+SELECT guest_id, room_number, floor, last_name, date_end FROM registrations, rooms, guests
+ WHERE archived=0 AND room_number=rooms.number
+ AND guest_id=guests.id ORDER BY room_number;
+END//
+
+DELIMITER // 
+CREATE PROCEDURE `selectGuestInfo` (IN guestID INT) 
+BEGIN 
+SELECT last_name, first_name, patronymic_name,
+   passport, birthdate, country, city, street, housenumber, flatnumber, points 
+   FROM guests WHERE id=guestID;
+END//
+
+DELIMITER // 
+CREATE PROCEDURE `selectGuestHistory` (IN guestID INT) 
+BEGIN 
+SELECT room_number, employees.last_name, date_begin, date_end, cost, commentary
+ FROM registrations, employees
+ WHERE archived=1 AND employee_id=employees.id
+ AND guest_id=guestID ORDER BY date_begin;
+END//
