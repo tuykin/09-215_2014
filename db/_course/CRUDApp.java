@@ -29,7 +29,7 @@ public class CRUDApp extends javax.swing.JFrame {
 
     static Connection conn;
     static Statement stmt;
-    static String dbURL = "jdbc:mysql://localhost:8889/university?user=root&password=root";
+    static String dbURL = "jdbc:mysql://localhost:3306/university?user=root";
     static ArrayList<String> tableNames = new ArrayList<String>();
     MyTableModel dbm = new MyTableModel(true);
 
