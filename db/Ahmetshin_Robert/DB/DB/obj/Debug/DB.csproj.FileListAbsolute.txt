@@ -1,0 +1,9 @@
+D:\Visual_Studio_Projects\DB\DB\bin\Debug\DB.exe.config
+D:\Visual_Studio_Projects\DB\DB\bin\Debug\DB.exe
+D:\Visual_Studio_Projects\DB\DB\bin\Debug\DB.pdb
+D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.Form1.resources
+D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.Properties.Resources.resources
+D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.csproj.GenerateResource.Cache
+D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.exe
+D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.pdb
+D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.csprojResolveAssemblyReference.cache
