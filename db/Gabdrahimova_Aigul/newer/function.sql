@@ -55,11 +55,10 @@ DELIMITER ;
 
 DELIMITER \\
 /*Вывод информацию о полетах клиента.*/
-CREATE  PROCEDURE info_fly(IN order_name VARCHAR(45),IN order_surname VARCHAR(45))
+CREATE  PROCEDURE info_customer(IN FIO VARCHAR(45))
 BEGIN
-SELECT f.NumberFly, f.FromWhere, f.ToWhere, f.Price, 
-f.TimeInFly, f.Time
-FROM Flies f
+SELECT f.,
+FROM customer f
 INNER JOIN 
 (SELECT  t.FliesId 
 FROM (SELECT id
@@ -99,7 +98,8 @@ BEGIN
 SELECT  f.Time
 FROM Flies f   
 WHERE f.Id=fly;
-END \\
+END 
+\\
 DELIMITER ;
 
 DELIMITER \\

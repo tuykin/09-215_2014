@@ -1,0 +1,10 @@
+CREATE TRIGGER delete_customer AFTER DELETE on customer
+FOR EACH ROW
+DELETE FROM  reservation
+    WHERE reservation.CustomerId = old.id;
+	
+CREATE TRIGGER mesto_trg   /*Создать новый триггер mesto_trg*/
+  AFTER INSERT ON resort    /*Отрабатывать после вставки таблицы*/
+FOR EACH                   /*Для каждой новой записи*/
+ROW INSERT INTO hotel   /*Добавить запись в hotel*/
+VALUES ('','Кемер');	

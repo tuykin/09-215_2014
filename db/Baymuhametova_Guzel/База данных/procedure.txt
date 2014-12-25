@@ -1,0 +1,54 @@
+DELIMITER \\
+CREATE DEFINER=`root`@`localhost` PROCEDURE `proc_2`()
+BEGIN
+select sum(k_child+k_grown)
+from reservation;
+END
+DELIMITER ;
+
+
+DELIMITER \\
+CREATE PROCEDURE `proc_1`()
+BEGIN
+select distinct tourists.Surname,tourists.Name_tourist
+From (tourists
+ inner join hotel
+ on tourists.id= tourists.HotelId);
+ END
+ \\
+DELIMITER ;
+
+DELIMITER \\
+CREATE DEFINER=`root`@`localhost` PROCEDURE `neww`()
+
+BEGIN
+
+select sum(price)
+from hotel;
+
+END
+DELIMITER ;
+
+DELIMITER \\
+/*Информация о бронировании по фамилии заказчика .*/
+CREATE  PROCEDURE info_reservation (IN FIO VARCHAR(45))
+BEGIN
+SELECT info.date_p, info.K_days 
+FROM reservation info
+INNER JOIN 
+(SELECT  t.CustomerId
+FROM (SELECT id
+   from customer WHERE 
+   customer.FIO LIKE CONCAT(FIO , '%'));
+END
+\\ DELIMITER ;
+
+
+CREATE PROCEDURE customer_delete 
+@id INT
+AS
+BEGIN 
+UPDATE customer SET
+is_deleted=1 
+WHERE id=@id
+END

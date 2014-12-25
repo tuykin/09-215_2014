@@ -7,3 +7,12 @@ D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.csproj.GenerateResource.Cache
 D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.exe
 D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.pdb
 D:\Visual_Studio_Projects\DB\DB\obj\Debug\DB.csprojResolveAssemblyReference.cache
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\bin\Debug\DB.exe.config
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\obj\Debug\DB.exe
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\obj\Debug\DB.pdb
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\bin\Debug\DB.exe
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\bin\Debug\DB.pdb
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\obj\Debug\DB.csprojResolveAssemblyReference.cache
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\obj\Debug\DB.Form1.resources
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\obj\Debug\DB.Properties.Resources.resources
+C:\Users\Гузель\Documents\GitHub\ads_3_2014\db\Ahmetshin_Robert\DB\DB\obj\Debug\DB.csproj.GenerateResource.Cache

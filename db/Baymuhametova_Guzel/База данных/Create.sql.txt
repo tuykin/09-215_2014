@@ -1,0 +1,72 @@
+CREATE DATABASE tour;
+use `tour`;
+CREATE TABLE Customer 
+(
+id INT NOT NULL PRIMARY KEY,
+FIO  VARCHAR(45) NOT NULL, 
+Num_Passport INT NOT NULL,
+Series_passport INT NOT NULL,
+Date_issue DATE NOT NULL,
+Issued VARCHAR(45) NOT NULL,
+Phone INT NOT NULL,
+Adress VARCHAR(45) NOT NULL,
+CHECK (Id>0)
+);
+CREATE TABLE  Resort
+(
+id INT NOT NULL PRIMARY KEY,
+Title VARCHAR(45) NOT NULL,
+CHECK (Id>0)
+);
+CREATE TABLE  Hotel
+(
+id INT NOT NULL PRIMARY KEY,
+Country VARCHAR(45) NOT NULL,
+Resort VARCHAR(45) DEFAULT 0,
+Price INT NOT NULL,
+ResortId INT NOT NULL,
+CHECK (Price>0),
+CHECK (Id>0),
+CONSTRAINT fk_Resort FOREIGN KEY (ResortId) REFERENCES Resort(id)
+); 
+CREATE TABLE Tourists
+(
+id  INT NOT NULL PRIMARY KEY,
+Sex ENUM('ì','æ') NOT NULL,
+Surname VARCHAR(45) NOT NULL, 
+Name VARCHAR(45) NOT NULL,
+Date_of_birth DATE NOT NULL,
+Num_Passport INT NOT NULL,
+Series_passport INT NOT NULL,
+Issued VARCHAR(45) NOT NULL,
+Citizenship VARCHAR(45) NOT NULL,
+HotelId INT NOT NULL,
+CHECK (Id>0),
+CONSTRAINT fk_Hotel FOREIGN KEY (HotelId) REFERENCES Hotel(id)
+ );
+CREATE TABLE Reservation
+(
+id INT NOT NULL PRIMARY KEY,
+date_p DATE NOT NULL,
+K_days INT NOT NULL,
+K_child INT DEFAULT 0,
+K_grown INT NOT NULL,
+CustomerId INT NOT NULL,
+TouristsId INT NOT NULL,
+CHECK (Id>0),
+CHECK (K_grown>0),
+CHECK (K_days >0),
+CONSTRAINT fk_Customer FOREIGN KEY (CustomerId) REFERENCES Customer(id),
+CONSTRAINT fk_Tourists  FOREIGN KEY (TouristsId) REFERENCES Tourists(id)
+);
+
+ CREATE TABLE  Flight
+( 
+id INT NOT NULL PRIMARY KEY,
+Departure DATETIME NOT NULL,
+Arrival DATETIME NOT NULL,
+City VARCHAR(45) NOT NULL,
+ReservationId INT NOT NULL,
+CHECK (Id>0),
+CONSTRAINT fk_Reservation FOREIGN KEY (ReservationId) REFERENCES Reservation(id)
+);
