@@ -117,7 +117,8 @@ public class PersonalArea extends JPanel {
             Statement stmt = conn.createStatement();
             ResultSet globalGenresResult = stmt.executeQuery("select name from genres where parent_id is null order by name");
             String[] globals = new String[12];
-            int i = 0;
+            globals[0] = "";
+            int i = 1;
             while(globalGenresResult.next()) {
                 globals[i] = globalGenresResult.getString("name");
                 i++;
@@ -159,8 +160,8 @@ public class PersonalArea extends JPanel {
                         try {
                             Connection conn = connector.getConnection();
                             Statement stmt = conn.createStatement();
-                            ResultSet genresResult = stmt.executeQuery("select name from genres where name='' or parent_id=" +
-                                    "(select id from genres where name='" +
+                            ResultSet genresResult = stmt.executeQuery("select name from genres where parent_id=" +
+                                    "(select id from genres where id <= 11 and name='" +
                                     globalGenresField.getSelectedItem() + "') order by name");
                             int rowCount = 0;
                             genresResult.first();
@@ -169,7 +170,8 @@ public class PersonalArea extends JPanel {
                             }
                             rowCount++;
                             String[] privateGenres = new String[rowCount];
-                            int i = 0;
+                            privateGenres[0] = "";
+                            int i = 1;
                             genresResult.first();
                             while(genresResult.next()) {
                                 privateGenres[i] = genresResult.getString("name");
