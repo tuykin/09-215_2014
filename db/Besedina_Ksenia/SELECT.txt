@@ -1,0 +1,69 @@
+SELECT surname, name, patronymic, customers.login, name_gds, orders.id_orders, date
+FROM customers, orders, goods_orders, goods
+
+WHERE customers.login=orders.login
+
+AND orders.id_orders= goods_orders.id_orders
+
+AND goods_orders.id_gds=goods.id_gds
+
+AND customers.login="Клиент1";
+
+
+SELECT orders.id_orders, name_gds, name, surname, patronymic
+
+FROM goods, goods_orders, orders, customers
+
+WHERE orders.login=customers.login 
+
+AND orders.id_orders=goods_orders.id_orders
+
+AND goods_orders.id_gds=goods.id_gds
+
+AND orders.date="2014-12-12";
+
+
+
+SELECT orders.id_orders, orders.date, sum_price, orders.name_point
+
+FROM orders, point
+
+WHERE orders.name_point=point.name_point;
+
+
+SELECT date_delivery, address,orders.id_orders, orders.date, sum_price
+
+FROM orders, delivery, customers
+
+WHERE delivery.id_orders=orders.id_orders
+
+AND orders.login=customers.login;
+
+
+SELECT orders.id_orders, orders.date, surname, name, patronymic
+
+FROM orders, customers
+
+WHERE orders.login=customers.login
+
+AND orders.state="новый";
+
+
+SELECT orders.id_orders, orders.date, type_receipt, type_pay, sum_price, surname, name, patronymic
+
+FROM orders, customers
+
+WHERE orders.login=customers.login
+
+AND orders.state="в обработке";
+
+
+SELECT goods.name_gds, goods.id_gds, goods.price
+
+FROM  goods, goods_orders, orders
+
+WHERE goods.id_gds=goods_orders.id_gds
+
+AND goods_orders.id_orders=orders.id_orders
+
+AND orders.id_orders="1";

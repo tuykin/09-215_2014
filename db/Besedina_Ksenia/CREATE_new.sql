@@ -1,4 +1,4 @@
-USE `tables`;
+USE `tableapp`;
 
 
 
@@ -16,9 +16,9 @@ date_of_b DATE NOT NULL
 
 
 CREATE TABLE delivery(
-id_orders INTEGER NOT NULL PRIMARY KEY,
-sum_weight FLOAT NOT NULL,
-sum_volume FLOAT NOT NULL,
+id_orders INTEGER AUTO_INCREMENT NOT NULL PRIMARY KEY,
+sum_weight FLOAT NOT NULL DEFAULT 0,
+sum_volume FLOAT NOT NULL DEFAULT 0,
 date_delivery DATE NOT NULL,
 price_delivery DECIMAL(7,2) NOT NULL,
 state VARCHAR(45) NOT NULL,
@@ -50,13 +50,11 @@ e_mail VARCHAR(45) NOT NULL
 CREATE TABLE goods (
   id_gds INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
   name_gds VARCHAR(45) NOT NULL,
-  specifics TEXT NULL,
-  price DECIMAL(7,2) UNSIGNED NOT NULL,
+  price DECIMAL(7,2) NOT NULL,
   weight FLOAT NOT NULL,
   length FLOAT NOT NULL,
   width FLOAT NOT NULL,
   height FLOAT NOT NULL,
-  image MEDIUMBLOB NULL,
   category VARCHAR(45) NOT NULL,
   subcategory VARCHAR(45) NOT NULL,
   name_creator VARCHAR(45) NOT NULL,
@@ -73,11 +71,11 @@ t_number VARCHAR(45) NOT NULL
 );
 
 CREATE TABLE orders(
-id_orders INTEGER PRIMARY KEY NOT NULL,
+id_orders INTEGER  AUTO_INCREMENT PRIMARY KEY NOT NULL,
 login VARCHAR(45) NOT NULL,
 type_pay VARCHAR(45) NOT NULL,
 type_receipt VARCHAR(45) NOT NULL,
-sum_price DECIMAL(7,2) NOT NULL,
+sum_price DECIMAL(7,2) NOT NULL DEFAULT 0 ,
 date DATE  NOT NULL,
 state VARCHAR(15)  NOT NULL,
 name_point VARCHAR(45),
