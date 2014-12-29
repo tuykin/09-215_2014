@@ -3,22 +3,30 @@ DROP TRIGGER IF EXISTS update_orders_sum_price;
 DELIMITER // 
 
 CREATE TRIGGER update_orders_sum_price 
-
 AFTER INSERT ON goods_orders FOR EACH ROW
-
-BEGIN
-	
-UPDATE orders SET sum_price = sum_price +
-		
-( SELECT price
-		
-FROM goods
-		
-WHERE id_gds = NEW.id_gds)
-	
+BEGIN	
+UPDATE orders SET sum_price = sum_price +		
+( SELECT price		
+FROM goods		
+WHERE id_gds = NEW.id_gds)	
 WHERE id_orders = NEW.id_orders;
-
 END;//
 
+DELIMITER ;
+
+
+DROP TRIGGER IF EXISTS update2_orders_sum_price;
+
+DELIMITER // 
+
+CREATE TRIGGER update2_orders_sum_price 
+AFTER UPDATE ON goods_orders FOR EACH ROW
+BEGIN	
+UPDATE orders SET sum_price = sum_price +		
+( SELECT price		
+FROM goods		
+WHERE id_gds = OLD.id_gds)	
+WHERE id_orders = NEW.id_orders;
+END;//
 
 DELIMITER ;

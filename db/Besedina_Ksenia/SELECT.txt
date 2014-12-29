@@ -10,34 +10,36 @@ AND goods_orders.id_gds=goods.id_gds
 AND customers.login="Клиент1";
 
 
-SELECT orders.id_orders, name_gds, name, surname, patronymic
+SELECT orders.id_orders, name, surname, patronymic, type_receipt, type_pay, state
 
-FROM goods, goods_orders, orders, customers
+
+FROM  orders, customers
+
 
 WHERE orders.login=customers.login 
-
-AND orders.id_orders=goods_orders.id_orders
-
-AND goods_orders.id_gds=goods.id_gds
-
 AND orders.date="2014-12-12";
-
 
 
 SELECT orders.id_orders, orders.date, sum_price, orders.name_point
 
+
 FROM orders, point
 
-WHERE orders.name_point=point.name_point;
+WHERE orders.name_point=point.name_point
 
+AND orders.state="обработан";
 
 SELECT date_delivery, address,orders.id_orders, orders.date, sum_price
 
 FROM orders, delivery, customers
 
+
 WHERE delivery.id_orders=orders.id_orders
 
-AND orders.login=customers.login;
+
+AND orders.login=customers.login
+
+AND delivery.state = "доставлен";
 
 
 SELECT orders.id_orders, orders.date, surname, name, patronymic

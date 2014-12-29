@@ -1,0 +1,30 @@
+DELIMITER \\
+CREATE PROCEDURE select_SUM_price(IN login1 VARCHAR(45))
+BEGIN
+SELECT SUM(price)
+FROM goods,goods_orders 
+WHERE goods.id_gds=goods_orders.id_gds
+AND login=login1
+AND id_orders is null;
+END \\
+DELIMITER ;
+
+DELIMITER \\
+CREATE PROCEDURE select_goods_sort(IN c VARCHAR(45),IN s VARCHAR(45))
+BEGIN
+SELECT name_gds
+FROM goods
+WHERE category=c
+AND subcategory=s;
+END \\
+DELIMITER ;
+
+DELIMITER \\
+CREATE PROCEDURE select_COUNT_basket(IN login1 VARCHAR(45))
+BEGIN
+SELECT COUNT(*)
+FROM goods_orders
+WHERE login=login1
+AND id_orders is null;
+END \\
+DELIMITER ;
